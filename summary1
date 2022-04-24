@@ -1,3 +1,50 @@
 Valgrind TD:
-EXO1:
+EXO1&2:
+rappels: gdb::
+FAITS.
+Demmarer le td(gdb fini)::
+->
+bases exo1!exo2!
+**stack smashing si acces ecriture depasse la capacite du tableau(pile corrompu car gcc retrace la sentinelle '' avant
+**conditional move or jump on 'initialisees non'  values pour l'acces lecture car on lit des valeurs qui n'ont pas ete initialisees.
+***************************
+EXO3/4:
+allocation dynamique pas automatique:
+pas de free=>condtitional jump or move or 'initialisees non' values.
+Use of uninitialised value of size 8 de meme pour les 2 (exo1/exo3) car le conditional..###  impliquerait que uninitialised value of size 8(pour le tableau en terme deVALEUR..///).
+EXO4/5:
+acces ecriture
+Invalid write of size of size 4 (int) car ecriture dans une case dans le tas qui depasse la limite disons autorisé du processus.
++Invalid read si j'essaie de lire la case: t[10]. (depassement capacite autorise pour le tas).//////
+--vgdb-error=1
+--track-origins=yes
+*************************************************
+EXO5:(--leak-check=full)
+Resume::(exo1-4)
+VALGRIND detecte les valeurs non initialisees dans la pile si acces lecture en use of ..value of size 8 pour un tableau(lecture valeurs tableau)+condionnal ..mais stack smashing si acces ecriture+depassement capacite ...... car optimisation recente de gcc.
+MAIS: dynamiquement: il detecte en terme de lecture une lecture non initialisee (memes erreurs qu'avant) si pas depassement indices sinon invalid read of size 4(int exemple('s)) && detecte aussi les debordements d'ecriture en 'invalid write of size 4)+rappel: invalid read si on ajoute(exo4.c):: printf pour t[10].=>plus fort pour le tas qu'a la pile ou gcc prend la main rapidement pour detecter une ecriture depassant la capacite.
+->exo5:
+voir fichiers correspondants(repertoir :::./ valgrind__??/////).
+****************************************************************
+->exo6:
+GDB CONTEST NOW:5 fichiers.
+voir commentaires..///
+(gdb+valgrind voir ()<<<exo5).
+*****************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
