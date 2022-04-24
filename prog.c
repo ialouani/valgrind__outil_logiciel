@@ -64,6 +64,7 @@ struct Node *build_tree(int *values,int s){
 void free_tree(struct Node *n){
   if (n==NULL) return;
   free_tree(n->left);
+  free_tree(n->right);
   free(n);
 }
 
